@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game</title>
+</head>
+<body>
+<script>
+    let arrayNumber = [];
+    for(let i= 1;i<101;i++){
+        arrayNumber.push(i);
+    }
+    let selectNumber = Math.floor(Math.random()*99+1);
+    alert("Mời bạn đoán số tôi chon trong dãy số : "+arrayNumber);
+    let guessNumber = parseInt(prompt("Mời bạn đoán số."));
+    for(let i=0;guessNumber!==selectNumber;i++){
+        if(guessNumber<selectNumber){
+            let countDown = arrayNumber.indexOf(guessNumber);
+            arrayNumber.splice(0,countDown+1);
+            alert("Số bạn chon quá thấp, hãy chọn lại trong dãy số : "+arrayNumber);
+            guessNumber = parseInt(prompt("Mời bạn đoán lại."));
+        }else {
+            let countUp = arrayNumber.indexOf(guessNumber);
+            let count = arrayNumber.length - countUp+1;
+            arrayNumber.splice(countUp,count);
+            alert("Số bạn chon quá cao, hãy chọn lại trong dãy số : "+arrayNumber);
+            guessNumber = parseInt(prompt("Mời bạn đoán lại."));
+        }
+    }
+    if(guessNumber===selectNumber){
+        alert("Bạn đã đoán đúng.");
+    }
+</script>
+</body>
+</html>
